@@ -1,0 +1,90 @@
+{% extends "./base.html" %}
+{% block 'title' %}Sign-Up{% endblock %}
+{% block 'data-page' %}'["CommonPage"]'{% endblock %}
+
+{% block 'content' %}
+    {% include './errormessages.html' %}
+    <div class="container-fluid offwhite">
+        <div class="row justify-content-center mt-10">
+            <div class="col-sm-11 col-lg-5">
+                <div class="card text-center shadow-lg border-danger border-2 bg-light"
+                     style="margin-top: 5%; margin-bottom: 50%">
+                    <div class="card-body">
+                        <div class="card-title text-capitalize" style="font-size: 1.8rem;">Sign Up On Hermes</div>
+                        <form method="post" action="{% url 'account_signup' %}" class="signup my-4" id="signup_form">
+                            {% csrf_token %}
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">First Name</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" placeholder="Enter First Name"
+                                           name="first_name"
+                                           autocomplete="given-name" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">Last Name</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" placeholder="Last Name" name="last_name"
+                                           autocomplete="family-name" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">Email</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="email" class="form-control" name="email" placeholder="Email Address"
+                                           autocomplete="email" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">Mobile</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="tel" class="form-control" name="mobile" placeholder="Mobile Number"
+                                           autocomplete="tel" required maxlength="15">
+                                </div>
+                            </div>
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">Password</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="password" class="form-control" placeholder="Password" name="password1"
+                                           autocomplete="new-password" required>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-start my-4">
+                                <div class="col-auto col-md-4">
+                                    <label class="col-form-label text-muted">Re-enter Password</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="password" class="form-control" placeholder="Re-enter Password"
+                                           name="password2"
+                                           autocomplete="new-password" required>
+                                </div>
+                            </div>
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="next" value="{{ redirect_field_value }}"/>
+                            {% endif %}
+                            <div class="form-group row justify-content-center">
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                        <div class="row align-items-center mt-3">
+                            <div class="col-12 mt-1">
+                                <p class="text-muted">Already have an account? <a href="{% url 'account_login' %}">Click here to login!</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block 'title' %}Index Page{% endblock %}
+{% block 'data-page' %}'["HomePage"]'{% endblock %}
+
+{% block 'content' %}
+    <section>
+        <div class="container-fluid p-3 green-blue-color">
+            <div class="row my-6 justify-content-center">
+                <div class="font-weight-bold display-4 purple-color mt-4 mb-4">
+                    Welcome to the world of Analytics!
+                    <br>
+                    technology + Analysis = Technalyse
+                </div>
+            </div>
+            <div class="row">
+                <div class="ml-4 font-weight-bold mt-4 mb-4 pl-4" style="font-size: large">
+                    <ul>
+                        <li class="my-1">Get best in class Business insights</li>
+                        <li class="my-1">Some Really Captivating Sales Dashboards</li>
+                        <li class="my-1">A mini CRM Tool</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-lg">
+            <div class="row py-4">
+                <div class="col-12 col-md-6">
+                    <img src="{% static 'images/frontend/image1.png' %}" class="rounded" style="width: 100%">
+                </div>
+                <div class="col my-auto">
+                    <div class="h2 purple-color">Technalyse is a Hybrid Retail Management tool</div>
+                    <div class="my-4">
+                        Worried about your Retail Problems ?
+                        <br>
+                        Getting tough to maintain a clean Database ?
+                        <br>
+                        Difficult to track and place your purchase orders?
+                    </div>
+                    <div class="my-4">
+                        Technalyse Solutions is here to ease out all your Troubles ! With latest tools and technology it
+                        ensures a smooth and trouble free Business Management.
+                    </div>
+                    <div>
+                        <a class="text-primary">HOW ? WAANA HAVE A LOOK !!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col-12 col-md-6 order-1">
+                    <img src="{% static 'images/frontend/image2.png' %}" class="rounded" style="width: 100%">
+                </div>
+                <div class="col order-0 my-auto">
+                    <div class="h2 purple-color">Device On the Go Marketing Campaigns !</div>
+                    <div class="my-4">
+                        With different Customer Segmentation and Ranking Mechanism, we help to achieve all the 4 Ps of
+                        Marketing and also help you in deciding the STP weapons.
+                    </div>
+                    <div>
+                        <a class="text-primary">PREVIEW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-4">
+                <div class="col-12 col-md-6">
+                    <img src="{% static 'images/frontend/image3.png' %}" class="rounded" style="width: 100%">
+                </div>
+                <div class="col my-auto">
+                    <div class="h2 purple-color">Take Informed Decisions</div>
+                    <div class="my-4">
+                        Range of analytics done on your retail data which compels it to confess out multiple truths !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

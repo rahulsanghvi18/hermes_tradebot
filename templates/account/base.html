@@ -1,0 +1,13 @@
+{% extends "../base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block render_css %}{% render_bundle 'account' 'css' %}{% endblock %}
+{% block render_js %}{% render_bundle 'account' 'js' %}{% endblock %}
+
+{% block 'header' %}{% endblock %}
+{% block 'footer' %}{% endblock %}
+
+
+{# to be defined by child #}
+{% block 'data-page' %}'[]'{% endblock %}
+{% block 'content' %}{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "./base.html" %}
+{% block 'title' %}Email Verification sent!{% endblock %}
+{% block 'data-page' %}'["CommonPage"]'{% endblock %}
+
+{% block 'content' %}
+    {% include './errormessages.html' %}
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-10">
+            <div class="col-sm-11 col-lg-5">
+                <div class="card text-center shadow-lg border-danger border-2 bg-light" style="margin-top: 25%; margin-bottom: 50%">
+                    <div class="card-body">
+                        <div class="card-title text-capitalize" style="font-size: 1.8rem;">Email Verification Sent!</div>
+                        <p>
+                            We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

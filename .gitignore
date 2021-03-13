@@ -1,0 +1,7 @@
+.env
+.idea/*
+node_modules/*
+static/*
+webpack-stats.json
+__pycache__/
+staticfiles/*

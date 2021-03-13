@@ -1,0 +1,15 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block render_css %}{% render_bundle 'frontend' 'css' %}{% endblock %}
+{% block render_js %}{% render_bundle 'frontend' 'js' %}{% endblock %}
+
+{% block 'header' %}{% include "./header.html" %}{% endblock %}
+{% block 'footer' %}{% include "./footer.html" %}{% endblock %}
+
+
+{# to be defined by child #}
+{% block 'title' %}{% endblock %}
+{% block 'data-page' %}'[]'{% endblock %}
+{% block 'content' %}{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "./base.html" %}
+{% block 'title' %}Sign Up Closed{% endblock %}
+{% block 'data-page' %}'["CommonPage"]'{% endblock %}
+
+{% block 'content' %}
+    {% include './errormessages.html' %}
+    <div class="container-fluid offwhite">
+        <div class="row justify-content-center mt-10">
+            <div class="col-sm-11 col-lg-5">
+                <div class="card text-center shadow-lg border-danger border-2 bg-light"
+                     style="margin-top: 45%; margin-bottom: 55%">
+                    <div class="card-body">
+                        <div class="card-title text-capitalize" style="font-size: 1.8rem;">Sign Up Closed</div>
+                        <p>We are sorry, but the sign up is currently closed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
