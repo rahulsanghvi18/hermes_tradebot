@@ -62,7 +62,7 @@ class BinanceClient:
                 start_time = dt.datetime(day=x.day, month=x.month, year=x.year, hour=0, minute=0, second=0)
                 end_time = dt.datetime(day=x.day, month=x.month, year=x.year, hour=23, minute=59, second=0)
                 ans_df = self.get_historical_data(symbol, Client.KLINE_INTERVAL_1MINUTE, start_time, end_time)
-                print(x)
+                print(symbol, x)
                 self.save_to_db(df=ans_df, last_date=x)
 
 
