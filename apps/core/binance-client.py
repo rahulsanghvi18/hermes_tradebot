@@ -8,6 +8,9 @@ from hermes_tradebot.models import HistoricalData, DataStats
 from django.db import transaction
 import tqdm
 from decouple import config
+from django.core.mail import send_mail
+import time
+import traceback
 
 
 class BinanceClient:
@@ -61,7 +64,16 @@ class BinanceClient:
             for x in daterange(start_date=start_date, end_date=end_date):
                 start_time = dt.datetime(day=x.day, month=x.month, year=x.year, hour=0, minute=0, second=0)
                 end_time = dt.datetime(day=x.day, month=x.month, year=x.year, hour=23, minute=59, second=0)
-                ans_df = self.get_historical_data(symbol, Client.KLINE_INTERVAL_1MINUTE, start_time, end_time)
+                try:
+                    ans_df = self.get_historical_data(symbol, Client.KLINE_INTERVAL_1MINUTE, start_time, end_time)
+                except:
+                    try:
+                        time.sleep(5)
+                        ans_df = self.get_historical_data(symbol, Client.KLINE_INTERVAL_1MINUTE, start_time, end_time)
+                    except Exception as e:
+                        send_mail("Processing has stopped", str(traceback.print_exc()), "cares.technalyse@gmail.com", ["rahulsanghvi18@gmail.com"])
+                        raise Exception(e)
+
                 print(symbol, x)
                 self.save_to_db(df=ans_df, last_date=x)
 
