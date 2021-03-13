@@ -67,4 +67,4 @@ class BinanceClient:
 
 
 obj = BinanceClient(api_key=config("API_KEY"), api_secret=config("API_SECRET"))
-obj.store_all_securities(start_date=dt.date(2017, 8, 15), end_date=dt.date(2021, 3, 11))
+obj.store_all_securities(start_date=dt.date(2017, 8, 15), end_date=dt.date(2021, 3, 12))
