@@ -11,6 +11,7 @@ from decouple import config
 from django.core.mail import send_mail
 import time
 import traceback
+import copy
 
 
 class BinanceClient:
@@ -52,13 +53,23 @@ class BinanceClient:
         self.hist_obj.stats["last_update"] = str(last_date)
         self.hist_obj.save()
 
-    def store_all_securities(self, start_date: dt.date, end_date: dt.date):
+    def store_all_securities(self, start_date_param: dt.date, end_date_param: dt.date):
         for symbol in tqdm.tqdm(self.ticker_df["symbol"]):
             self.hist_obj, created = DataStats.objects.get_or_create(trading_symbol=symbol)
-            if not created:
-                end_date = to_date_obj(self.hist_obj.stats["last_update"]) + dt.timedelta(days=1)
+
+            if created:
                 self.hist_obj.stats = {}
-            if end_date >= dt.datetime.now(tz=pytz.UTC).date() or start_date >= end_date:
+                start_date = copy.copy(start_date_param)
+                end_date = copy.copy(end_date_param)
+            else:
+                start_date = to_date_obj(self.hist_obj.stats["last_update"]) + dt.timedelta(days=1)
+                end_date = copy.copy(end_date_param)
+
+            if end_date >= dt.datetime.now(tz=pytz.UTC).date():
+                end_date = dt.datetime.now(tz=pytz.UTC).date() - dt.timedelta(days=1)
+
+            if start_date > end_date:
+                send_mail("Start Date > end date", symbol, "cares.technalyse@gmail.com", ["rahulsanghvi18@gmail.com"])
                 continue
 
             for x in daterange(start_date=start_date, end_date=end_date):
@@ -79,4 +90,4 @@ class BinanceClient:
 
 
 obj = BinanceClient(api_key=config("API_KEY"), api_secret=config("API_SECRET"))
-obj.store_all_securities(start_date=dt.date(2017, 8, 15), end_date=dt.date(2021, 3, 12))
+obj.store_all_securities(start_date_param=dt.date(2017, 8, 15), end_date_param=dt.date(2021, 3, 12))
